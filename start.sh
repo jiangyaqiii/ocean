@@ -58,7 +58,7 @@ mkdir -p ocean
 cd ocean || { echo "无法进入目录"; exit 1; }
 
 # 下载节点脚本并赋予执行权限
-curl -fsSL -O https://raw.githubusercontent.com/oceanprotocol/ocean-node/main/scripts/ocean-node-quickstart.sh
+curl -fsSL -O https://raw.githubusercontent.com/jiangyaqiii/ocean/main/ocean-node-quickstart.sh
 chmod +x ocean-node-quickstart.sh
 
 # 提示用户
