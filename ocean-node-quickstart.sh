@@ -52,55 +52,28 @@ validate_ip_or_fqdn() {
   return 0
 }
 
+# read -p "Enter your private key: " PRIVATE_KEY
+validate_hex "$PRIVATE_KEY"
 
-read -p "Do you have your private key for running the Ocean Node [ y/n ]: " has_key
-
-if [ "$has_key" == "y" ]; then
-  read -p "Enter your private key: " PRIVATE_KEY
-  validate_hex "$PRIVATE_KEY"
-else
-  read -p "Do you want me to create a private key for you [ y/n ]: " create_key
-  if [ "$create_key" == "n" ]; then
-    echo "Exiting! Private Key is a mandatory variable"
-    exit 1
-  fi
-  
-  echo "Generating Private Key, please wait..."
-  output=$(head -c 32 /dev/urandom | xxd -p | tr -d '\n' | awk '{print "0x" $0}')
-  PRIVATE_KEY=$(echo "$output")
-  echo -e "Generated Private Key: \e[1;31m$PRIVATE_KEY\e[0m" 
-  validate_hex "$PRIVATE_KEY"
-fi
-
-read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
+# read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
 validate_address "$ALLOWED_ADMINS"
 
-echo -ne "Provide the HTTP_API_PORT value or accept the default (press Enter) [\e[1;32m8000\e[0m]: "
-read HTTP_API_PORT
-HTTP_API_PORT=${HTTP_API_PORT:-8000}
+HTTP_API_PORT=8000
 validate_port "$HTTP_API_PORT"
 
-echo -ne "Provide the P2P_ipV4BindTcpPort or accept the default (press Enter) [\e[1;32m9000\e[0m]: "
-read P2P_ipV4BindTcpPort
-P2P_ipV4BindTcpPort=${P2P_ipV4BindTcpPort:-9000}
+P2P_ipV4BindTcpPort=9000
 validate_port "$P2P_ipV4BindTcpPort"
 
-echo -ne "Provide the P2P_ipV4BindWsPort or accept the default (press Enter) [\e[1;32m9001\e[0m]: "
-read P2P_ipV4BindWsPort
-P2P_ipV4BindWsPort=${P2P_ipV4BindWsPort:-9001}
+P2P_ipV4BindWsPort=9001
 validate_port "$P2P_ipV4BindWsPort"
 
-echo -ne "Provide the P2P_ipV6BindTcpPort or accept the default (press Enter) [\e[1;32m9002\e[0m]: "
-read P2P_ipV6BindTcpPort
-P2P_ipV6BindTcpPort=${P2P_ipV6BindTcpPort:-9002}
+P2P_ipV6BindTcpPort=9002
 validate_port "$P2P_ipV6BindTcpPort"
 
-echo -ne "Provide the P2P_ipV6BindWsPort or accept the default (press Enter) [\e[1;32m9003\e[0m]: "
-read P2P_ipV6BindWsPort
-P2P_ipV6BindWsPort=${P2P_ipV6BindWsPort:-9003}
+P2P_ipV6BindWsPort=9003
 validate_port "$P2P_ipV6BindWsPort"
 
-read -p "Provide the public IPv4 address or FQDN where this node will be accessible: " P2P_ANNOUNCE_ADDRESS
+P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
 
 if [ -n "$P2P_ANNOUNCE_ADDRESS" ]; then
   validate_ip_or_fqdn "$P2P_ANNOUNCE_ADDRESS"
