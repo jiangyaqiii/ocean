@@ -52,10 +52,10 @@ validate_ip_or_fqdn() {
   return 0
 }
 
-# read -p "Enter your private key: " PRIVATE_KEY
+read -p "Enter your private key: " PRIVATE_KEY
 validate_hex "$PRIVATE_KEY"
 
-# read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
+read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
 validate_address "$ALLOWED_ADMINS"
 
 HTTP_API_PORT=8000
