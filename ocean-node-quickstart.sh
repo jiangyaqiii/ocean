@@ -58,22 +58,32 @@ validate_hex "$PRIVATE_KEY"
 read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
 validate_address "$ALLOWED_ADMINS"
 
-HTTP_API_PORT=8000
+echo -ne "Provide the HTTP_API_PORT value or accept the default (press Enter) [\e[1;32m8000\e[0m]: "
+read HTTP_API_PORT
+HTTP_API_PORT=${HTTP_API_PORT:-8000}
 validate_port "$HTTP_API_PORT"
 
-P2P_ipV4BindTcpPort=9000
+echo -ne "Provide the P2P_ipV4BindTcpPort or accept the default (press Enter) [\e[1;32m9000\e[0m]: "
+read P2P_ipV4BindTcpPort
+P2P_ipV4BindTcpPort=${P2P_ipV4BindTcpPort:-9000}
 validate_port "$P2P_ipV4BindTcpPort"
 
-P2P_ipV4BindWsPort=9001
+echo -ne "Provide the P2P_ipV4BindWsPort or accept the default (press Enter) [\e[1;32m9001\e[0m]: "
+read P2P_ipV4BindWsPort
+P2P_ipV4BindWsPort=${P2P_ipV4BindWsPort:-9001}
 validate_port "$P2P_ipV4BindWsPort"
 
-P2P_ipV6BindTcpPort=9002
+echo -ne "Provide the P2P_ipV6BindTcpPort or accept the default (press Enter) [\e[1;32m9002\e[0m]: "
+read P2P_ipV6BindTcpPort
+P2P_ipV6BindTcpPort=${P2P_ipV6BindTcpPort:-9002}
 validate_port "$P2P_ipV6BindTcpPort"
 
-P2P_ipV6BindWsPort=9003
+echo -ne "Provide the P2P_ipV6BindWsPort or accept the default (press Enter) [\e[1;32m9003\e[0m]: "
+read P2P_ipV6BindWsPort
+P2P_ipV6BindWsPort=${P2P_ipV6BindWsPort:-9003}
 validate_port "$P2P_ipV6BindWsPort"
 
-P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
+read -p "Provide the public IPv4 address or FQDN where this node will be accessible: " P2P_ANNOUNCE_ADDRESS
 
 if [ -n "$P2P_ANNOUNCE_ADDRESS" ]; then
   validate_ip_or_fqdn "$P2P_ANNOUNCE_ADDRESS"
