@@ -1,2 +1,2 @@
 ip=$(curl -s4 ifconfig.me/ip)
-echo $ip
+echo 'http://$ip:8000/dashboard/'
