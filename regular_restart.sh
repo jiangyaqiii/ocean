@@ -9,9 +9,9 @@ do
     docker rm $(docker ps -aq)
     docker-compose up -d
     sleep 86400  # 每隔10秒检查一次
-done' > regular_restart.sh
+done' > regular.sh
 ##给予执行权限
-chmod +x regular_restart.sh
+chmod +x regular.sh
 # ================================================================================================================================
 echo '[Unit]
 Description=Ocean Monitor Service
@@ -19,7 +19,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /root/regular_restart.sh
+ExecStart=/bin/bash /root/regular.sh
 
 [Install]
 WantedBy=multi-user.target' > /etc/systemd/system/ocean_restart.service
