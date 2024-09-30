@@ -4,7 +4,7 @@ echo '#!/bin/bash
 while true
 do
     cd ~/ocean
-    docker_id=$(docker ps | grep "ocean-node" | awk '{print $1}')
+    docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
     docker stop $(docker ps -aq)
     docker rm $(docker ps -aq)
     docker-compose up -d
