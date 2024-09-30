@@ -1,30 +1,29 @@
 # ===================================公共模块===监控screen模块======================================================================
 cd ~
-#监控screen脚本
 echo '#!/bin/bash
 while true
 do
-    if ! screen -list | grep -q "Quili"; then
-        echo "Screen session not found, restarting..."
-        cd /root/ceremonyclient/node
-        screen -dmS Quili bash -c "./release_autorun.sh"
-    fi
+    cd ~/ocean
+    docker_id=$(docker ps | grep "ocean-node" | awk '{print $1}')
+    docker stop $(docker ps -aq)
+    docker rm $(docker ps -aq)
+    docker-compose up -d
     sleep 86400  # 每隔10秒检查一次
-done' > monit.sh
+done' > regular_restart.sh
 ##给予执行权限
-chmod +x monit.sh
+chmod +x regular_restart.sh
 # ================================================================================================================================
 echo '[Unit]
-Description=Quili Monitor Service
+Description=Ocean Monitor Service
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /root/monit.sh
+ExecStart=/bin/bash /root/regular_restart.sh
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/quili_monitor.service
+WantedBy=multi-user.target' > /etc/systemd/system/ocean_restart.service
 sudo systemctl daemon-reload
-sudo systemctl enable quili_monitor.service
-sudo systemctl start quili_monitor.service
-sudo systemctl status quili_monitor.service
+sudo systemctl enable ocean_restart.service
+sudo systemctl start ocean_restart.service
+sudo systemctl status ocean_restart.service
