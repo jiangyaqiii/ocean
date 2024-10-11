@@ -1,12 +1,15 @@
 # ===================================公共模块===监控screen模块======================================================================
 cd ~
 echo '#!/bin/bash
-cd ~/ocean
-docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
-docker stop $docker_id
-docker rm $docker_id
-docker-compose up -d
-' > regular.sh
+while true
+do
+  cd ~/ocean
+  docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
+  docker stop $docker_id
+  docker rm $docker_id
+  docker-compose up -d
+  sleep 
+done' > regular.sh
 ##给予执行权限
 chmod +x regular.sh
 # ================================================================================================================================
@@ -15,9 +18,8 @@ Description=Restart Ocean Docker Containers Service
 After=network.target
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/bin/bash /root/regular.sh
-RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target' > /etc/systemd/system/ocean-restart.service
