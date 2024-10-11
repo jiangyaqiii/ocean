@@ -1,3 +1,3 @@
 # ocean
 
-wget -O regular_restart2.sh https://raw.githubusercontent.com/jiangyaqiii/ocean/main/regular_restart2.sh && chmod +x regular_restart2.sh && ./regular_restart2.sh
+wget -O regular_restart.sh https://raw.githubusercontent.com/jiangyaqiii/ocean/main/regular_restart.sh && chmod +x regular_restart.sh && ./regular_restart.sh
