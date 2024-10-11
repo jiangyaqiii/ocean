@@ -3,8 +3,8 @@ cd ~
 echo '#!/bin/bash
 cd ~/ocean
 docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
+docker stop $docker_id
+docker rm $docker_id
 docker-compose up -d
 ' > regular.sh
 ##给予执行权限
