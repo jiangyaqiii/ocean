@@ -8,7 +8,7 @@ do
   docker stop $docker_id
   docker rm $docker_id
   docker-compose up -d
-  sleep 
+  sleep 86400
 done' > regular.sh
 ##给予执行权限
 chmod +x regular.sh
