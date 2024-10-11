@@ -26,7 +26,7 @@ WantedBy=multi-user.target' > /etc/systemd/system/ocean-restart.service
 sudo systemctl daemon-reload
 sudo systemctl enable ocean-restart.service
 sudo systemctl start ocean-restart.service
-sudo systemctl status ocean-restart.service
+echo '==flag:v2===='
 # ================================================flag:v2=====================================================================================
 # echo '[Unit]
 # Description=Timer for restarting Ocean Docker containers every 24 hours
