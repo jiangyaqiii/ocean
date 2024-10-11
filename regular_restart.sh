@@ -1,30 +1,39 @@
 # ===================================公共模块===监控screen模块======================================================================
-echo "================flag:v1================"
 cd ~
 echo '#!/bin/bash
-while true
-do
-    cd ~/ocean
-    docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
-    docker stop $(docker ps -aq)
-    docker rm $(docker ps -aq)
-    docker-compose up -d
-    sleep 86400  # 每隔10秒检查一次
-done' > regular.sh
+cd ~/ocean
+docker_id=$(docker ps | grep "ocean-node" | awk "{print $1}")
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker-compose up -d
+' > regular.sh
 ##给予执行权限
 chmod +x regular.sh
 # ================================================================================================================================
-echo '[Unit]
-Description=Ocean Monitor Service
+echo ' [Unit]
+Description=Restart Ocean Docker Containers Service
 After=network.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/bin/bash /root/regular.sh
+RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/ocean_restart.service
+WantedBy=multi-user.target' > /etc/systemd/system/ocean-restart.service
 sudo systemctl daemon-reload
-sudo systemctl enable ocean_restart.service
-sudo systemctl start ocean_restart.service
-sudo systemctl status ocean_restart.service
+sudo systemctl enable ocean-restart.service
+sudo systemctl start ocean-restart.service
+sudo systemctl status ocean-restart.service
+# ================================================================================================================================
+echo '[Unit]
+Description=Timer for restarting Ocean Docker containers every 24 hours
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/ocean-restart.timer
+sudo systemctl start ocean-restart.timer
+sudo systemctl enable ocean-restart.timer
