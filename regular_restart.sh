@@ -26,14 +26,14 @@ sudo systemctl enable ocean-restart.service
 sudo systemctl start ocean-restart.service
 sudo systemctl status ocean-restart.service
 # ================================================================================================================================
-echo '[Unit]
-Description=Timer for restarting Ocean Docker containers every 24 hours
+# echo '[Unit]
+# Description=Timer for restarting Ocean Docker containers every 24 hours
 
-[Timer]
-OnCalendar=*:0/1
-Persistent=true
+# [Timer]
+# OnCalendar=*:0/1
+# Persistent=true
 
-[Install]
-WantedBy=timers.target' > /etc/systemd/system/ocean-restart.timer
-sudo systemctl start ocean-restart.timer
-sudo systemctl enable ocean-restart.timer
+# [Install]
+# WantedBy=timers.target' > /etc/systemd/system/ocean-restart.timer
+# sudo systemctl start ocean-restart.timer
+# sudo systemctl enable ocean-restart.timer
