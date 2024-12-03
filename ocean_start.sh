@@ -55,7 +55,7 @@ docker-compose --version
 
 # 创建目录并进入
 mkdir -p ocean
-cd ocean || { echo "无法进入目录"; exit 1; }
+cd ocean 
 
 # 下载节点脚本并赋予执行权限
 curl -fsSL -O https://raw.githubusercontent.com/jiangyaqiii/ocean/main/ocean-node-quickstart.sh
@@ -70,7 +70,7 @@ echo "4. 连续按 5 次 Enter。"
 echo "5. 输入服务器的 IP 地址。"
 
 # 执行节点脚本
-./ocean-node-quickstart.sh
+echo -e '\n\n\n\n\n'| ./ocean-node-quickstart.sh
 
 # 启动节点
 echo "启动节点..."
