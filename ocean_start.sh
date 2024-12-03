@@ -61,13 +61,15 @@ cd ocean
 curl -fsSL -O https://raw.githubusercontent.com/jiangyaqiii/ocean/main/ocean-node-quickstart.sh
 chmod +x ocean-node-quickstart.sh
 
-# 提示用户
-echo "即将运行节点脚本。请按照以下步骤操作："
-echo "1. 在安装过程中，选择 'Y' 并按 Enter。"
-echo "2. 输入你的 EVM 钱包的私钥，注意在私钥前添加 '0x' 前缀。"
-echo "3. 输入与私钥对应的 EVM 钱包地址。"
-echo "4. 连续按 5 次 Enter。"
-echo "5. 输入服务器的 IP 地址。"
+# # 提示用户
+# echo "即将运行节点脚本。请按照以下步骤操作："
+# echo "1. 在安装过程中，选择 'Y' 并按 Enter。"
+# echo "2. 输入你的 EVM 钱包的私钥，注意在私钥前添加 '0x' 前缀。"
+# echo "3. 输入与私钥对应的 EVM 钱包地址。"
+# echo "4. 连续按 5 次 Enter。"
+# echo "5. 输入服务器的 IP 地址。"
+
+P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
 
 # 执行节点脚本
 echo -e '\n\n\n\n\n'| ./ocean-node-quickstart.sh
