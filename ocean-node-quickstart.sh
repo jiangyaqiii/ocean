@@ -53,17 +53,17 @@ validate_ip_or_fqdn() {
 }
 
 
-read -p "Do you have your private key for running the Ocean Node [ y/n ]: " has_key
-
-if [ "$has_key" == "y" ]; then
-  read -p "Enter your private key: " PRIVATE_KEY
-  validate_hex "$PRIVATE_KEY"
-else
-  read -p "Do you want me to create a private key for you [ y/n ]: " create_key
-  if [ "$create_key" == "n" ]; then
-    echo "Exiting! Private Key is a mandatory variable"
-    exit 1
-  fi
+# read -p "Do you have your private key for running the Ocean Node [ y/n ]: " has_key
+validate_hex "$PRIVATE_KEY"
+# if [ "$has_key" == "y" ]; then
+#   # read -p "Enter your private key: " PRIVATE_KEY
+#   
+# else
+#   read -p "Do you want me to create a private key for you [ y/n ]: " create_key
+#   if [ "$create_key" == "n" ]; then
+#     echo "Exiting! Private Key is a mandatory variable"
+#     exit 1
+#   fi
   
   echo "Generating Private Key, please wait..."
   output=$(head -c 32 /dev/urandom | xxd -p | tr -d '\n' | awk '{print "0x" $0}')
@@ -72,7 +72,7 @@ else
   validate_hex "$PRIVATE_KEY"
 fi
 
-read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
+# read -p "Please provide the wallet address to be added as Ocean Node admin account: " ALLOWED_ADMINS
 validate_address "$ALLOWED_ADMINS"
 
 echo -ne "Provide the HTTP_API_PORT value or accept the default (press Enter) [\e[1;32m8000\e[0m]: "
@@ -100,7 +100,7 @@ read P2P_ipV6BindWsPort
 P2P_ipV6BindWsPort=${P2P_ipV6BindWsPort:-9003}
 validate_port "$P2P_ipV6BindWsPort"
 
-read -p "Provide the public IPv4 address or FQDN where this node will be accessible: " P2P_ANNOUNCE_ADDRESS
+# read -p "Provide the public IPv4 address or FQDN where this node will be accessible: " P2P_ANNOUNCE_ADDRESS
 
 if [ -n "$P2P_ANNOUNCE_ADDRESS" ]; then
   validate_ip_or_fqdn "$P2P_ANNOUNCE_ADDRESS"
