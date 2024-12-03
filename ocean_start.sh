@@ -79,4 +79,4 @@ docker-compose up -d
 echo "节点启动完成！"
 
 cd
-rm start.sh
+rm ocean_start.sh
