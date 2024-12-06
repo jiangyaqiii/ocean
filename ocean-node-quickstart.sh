@@ -165,7 +165,7 @@ services:
       P2P_ipV6BindAddress: '::'
       P2P_ipV6BindTcpPort: '9002'
       P2P_ipV6BindWsPort: '9003'
-      P2P_ANNOUNCE_ADDRESSES: '["/ip4/38.12.2.212/tcp/9010","/ip4/38.12.2.212/ws/tcp/9011"]'
+      P2P_ANNOUNCE_ADDRESSES: '["/ip4/$P2P_ANNOUNCE_ADDRESS/tcp/9010","/ip4/$P2P_ANNOUNCE_ADDRESS/ws/tcp/9011"]'
 #      P2P_ANNOUNCE_PRIVATE: ''
 #      P2P_pubsubPeerDiscoveryInterval: ''
 #      P2P_dhtMaxInboundStreams: ''
@@ -188,7 +188,7 @@ services:
     image: typesense/typesense:26.0
     container_name: typesense
     ports:
-      - "8108:8108"
+      - '8108:8108'
     networks:
       - ocean_network
     volumes:
@@ -203,21 +203,3 @@ networks:
   ocean_network:
     driver: bridge
 EOF
-
-echo -e "\e[1;32mDocker Compose file has been generated successfully.\e[0m"
-echo ""
-echo -e "\e[1;32mYou are now ready to start your Ocean Node.\e[0m"
-echo ""
-echo -e "\e[1;32m1)\e[0m If further customization is required, edit the \e[1;32mdocker-compose.yml\e[0m file."
-echo -e "For all available configurations, refer to the environment variables documentation:"
-echo -e "\e[1;34mhttps://github.com/oceanprotocol/ocean-node/blob/main/docs/env.md\e[0m"
-echo ""
-echo -e "\e[1;32m2)\e[0m Start your Ocean Node by running the command:"
-echo -e "\e[1;32mdocker-compose up -d\e[0m"
-echo ""
-echo -e "\e[1;32m3)\e[0m Allow and forward the following incoming TCP ports through the firewall to the Ocean Node host:"
-echo -e "\e[1;32mHTTP API Port: $HTTP_API_PORT\e[0m"
-echo -e "\e[1;32mP2P IPv4 TCP Port: $P2P_ipV4BindTcpPort\e[0m"
-echo -e "\e[1;32mP2P IPv4 WebSocket Port: $P2P_ipV4BindWsPort\e[0m"
-echo -e "\e[1;32mP2P IPv6 TCP Port: $P2P_ipV6BindTcpPort\e[0m"
-echo -e "\e[1;32mP2P IPv6 WebSocket Port: $P2P_ipV6BindWsPort\e[0m"
