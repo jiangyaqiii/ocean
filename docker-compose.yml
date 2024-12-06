@@ -11,9 +11,8 @@ services:
       - '9002:9002'
       - '9003:9003'
     environment:
-      PRIVATE_KEY: '$PRIVATE_KEY'
-#      RPCS: '{"1":{"rpc":"https://ethereum-rpc.publicnode.com","fallbackRPCs":["https://rpc.ankr.com/eth","https://1rpc.io/eth","https://eth.api.onfinality.io/public"],"chainId":1,"network":"mainnet","chunkSize":100},"10":{"rpc":"https://mainnet.optimism.io","fallbackRPCs":["https://optimism-mainnet.public.blastapi.io","https://rpc.ankr.com/optimism","https://optimism-rpc.publicnode.com"],"chainId":10,"network":"optimism","chunkSize":100},"137":{"rpc":"https://polygon-rpc.com/","fallbackRPCs":["https://polygon-mainnet.public.blastapi.io","https://1rpc.io/matic","https://rpc.ankr.com/polygon"],"chainId":137,"network":"polygon","chunkSize":100},"23294":{"rpc":"https://sapphire.oasis.io","fallbackRPCs":["https://1rpc.io/oasis/sapphire"],"chainId":23294,"network":"sapphire","chunkSize":100},"23295":{"rpc":"https://testnet.sapphire.oasis.io","chainId":23295,"network":"sapphire-testnet","chunkSize":100},"11155111":{"rpc":"https://eth-sepolia.public.blastapi.io","fallbackRPCs":["https://1rpc.io/sepolia","https://eth-sepolia.g.alchemy.com/v2/demo"],"chainId":11155111,"network":"sepolia","chunkSize":100},"11155420":{"rpc":"https://sepolia.optimism.io","fallbackRPCs":["https://endpoints.omniatech.io/v1/op/sepolia/public","https://optimism-sepolia.blockpi.network/v1/rpc/public"],"chainId":11155420,"network":"optimism-sepolia","chunkSize":100}}'
-      RPCS: '{"1":{"rpc":"https://api.securerpc.com/v1","fallbackRPCs":["https://rpc.ankr.com/eth"],"chainId":1,"network":"mainnet","chunkSize":100},"10":{"rpc":"https://mainnet.optimism.io","fallbackRPCs":["https://rpc.ankr.com/optimism"],"chainId":10,"network":"optimism","chunkSize":100},"137":{"rpc":"https://polygon-rpc.com/","fallbackRPCs":["https://rpc.ankr.com/polygon"],"chainId":137,"network":"polygon","chunkSize":100},"23294":{"rpc":"https://sapphire.oasis.io","fallbackRPCs":["https://1rpc.io/oasis/sapphire"],"chainId":23294,"network":"sapphire","chunkSize":100},"23295":{"rpc":"https://testnet.sapphire.oasis.io","chainId":23295,"network":"sapphire-testnet","chunkSize":100},"11155111":{"rpc":"https://eth-sepolia.api.onfinality.io/public","fallbackRPCs":["https://sepolia.gateway.tenderly.co"],"chainId":11155111,"network":"sepolia","chunkSize":100},"11155420":{"rpc":"https://sepolia.optimism.io","fallbackRPCs":["https://endpoints.omniatech.io/v1/op/sepolia/public","https://optimism-sepolia.blockpi.network/v1/rpc/public","https://optimism-sepolia.gateway.tenderly.co","https://api.zan.top/opt-sepolia"],"chainId":11155420,"network":"optimism-sepolia","chunkSize":100}}'
+      PRIVATE_KEY: '0x7ac63f40accd0def13eeea922f46b58fa193eda064b0d4a01ad5942cecae5bbc'
+      RPCS: '{"1":{"rpc":"https://api.securerpc.com/v1","fallbackRPCs":["https://rpc.ankr.com/eth"],"chainId":1,"network":"mai//mainnet.optimism.io","fallbackRPCs":["https://rpc.ankr.com/optimism"],"chainId":10,"network":"optimism","chunkSize":100},"13backRPCs":["https://rpc.ankr.com/polygon"],"chainId":137,"network":"polygon","chunkSize":100},"23294":{"rpc":"https://sapphireo/oasis/sapphire"],"chainId":23294,"network":"sapphire","chunkSize":100},"23295":{"rpc":"https://testnet.sapphire.oasis.io","c,"chunkSize":100},"11155111":{"rpc":"https://eth-sepolia.api.onfinality.io/public","fallbackRPCs":["https://sepolia.gateway.tesepolia","chunkSize":100},"11155420":{"rpc":"https://sepolia.optimism.io","fallbackRPCs":["https://endpoints.omniatech.io/v1/oa.blockpi.network/v1/rpc/public","https://optimism-sepolia.gateway.tenderly.co","https://api.zan.top/opt-sepolia"],"chainId":1kSize":100}}'
       DB_URL: 'http://typesense:8108/?apiKey=xyz'
       IPFS_GATEWAY: 'https://ipfs.io/'
       ARWEAVE_GATEWAY: 'https://arweave.net/'
@@ -27,7 +26,7 @@ services:
       INTERFACES: '["HTTP","P2P"]'
       #      ALLOWED_VALIDATORS: ''
       #      INDEXER_NETWORKS: '[]'
-      ALLOWED_ADMINS: '["0xb216b798915D54F178b44c83c7C6989598E9e393"]'
+      ALLOWED_ADMINS: '["0x2e21dd6858d57f88103d29765A19DD7aE913C99C"]'
       #      INDEXER_INTERVAL: ''
       DASHBOARD: 'true'
       #      RATE_DENY_LIST: ''
@@ -43,7 +42,7 @@ services:
       P2P_ipV6BindAddress: '::'
       P2P_ipV6BindTcpPort: '9002'
       P2P_ipV6BindWsPort: '9003'
-      P2P_ANNOUNCE_ADDRESSES: '["/ip4/38.12.2.212/tcp/9010","/ip4/38.12.2.212/ws/tcp/9011"]' #改为服务器的ip+端口
+      P2P_ANNOUNCE_ADDRESSES: '["/ip4/38.12.2.69/tcp/9010","/ip4/38.12.2.69/ws/tcp/9011"]' #改为服务器的ip+端口
     #      P2P_ANNOUNCE_PRIVATE: ''
     #      P2P_pubsubPeerDiscoveryInterval: ''
     #      P2P_dhtMaxInboundStreams: ''
