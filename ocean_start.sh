@@ -69,7 +69,7 @@ chmod +x ocean-node-quickstart.sh
 # echo "4. 连续按 5 次 Enter。"
 # echo "5. 输入服务器的 IP 地址。"
 
-P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
+export P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
 
 # 执行节点脚本
 ./ocean-node-quickstart.sh
