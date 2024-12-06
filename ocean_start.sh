@@ -72,7 +72,7 @@ chmod +x ocean-node-quickstart.sh
 P2P_ANNOUNCE_ADDRESS=$(curl -s4 ifconfig.me/ip)
 
 # 执行节点脚本
-echo -e '\n\n\n\n\n'| ./ocean-node-quickstart.sh
+./ocean-node-quickstart.sh
 
 # 启动节点
 echo "启动节点..."
